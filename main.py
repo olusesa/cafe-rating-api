@@ -1,7 +1,7 @@
 import os 
 import psycopg2
 from flask import Flask, render_template, redirect, url_for, request, jsonify
-from bootstrap_flask import Bootstrap5
+from flask_bootstrap import Bootstrap5
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired, URL
