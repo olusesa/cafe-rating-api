@@ -8,7 +8,7 @@ from wtforms.validators import DataRequired, URL
 import csv
 
 app = Flask(__name__)
-bootstrap = Bootstrap5(app)
+Bootstrap5(app)
 url = os.getenv("DATABASE_URL")
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
 connection = psycopg2.connect(url)
