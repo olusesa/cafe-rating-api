@@ -23,7 +23,7 @@ class CafeForm(FlaskForm):
     power_rating = SelectField("Power Socket Availability", choices=["✘", "🔌", "🔌🔌", "🔌🔌🔌", "🔌🔌🔌🔌", "🔌🔌🔌🔌🔌"], validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-CREATE_CAFE_SHOPS_TABLE = "CREATE TABLE IF NOT EXISTS cafe_shops (id SERIAL PRIMARY KEY, username TEXT, email TEXT, phone TEXT, name TEXT);"
+CREATE_CAFE_SHOPS_TABLE = "CREATE TABLE IF NOT EXISTS cafe_shops (id SERIAL PRIMARY KEY, cafe_username TEXT, cafe TEXT, location TEXT, open TEXT, close TEXT, coffee_rating TEXT, wifi_rating TEXT, power_rating TEXT);"
 
 with connection:
     with connection.cursor() as cursor:
