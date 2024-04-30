@@ -19,9 +19,9 @@ class CafeForm(FlaskForm):
     location = StringField("Cafe Location on Google Maps (URL)", validators=[DataRequired(), URL()])
     open = StringField("Opening Time e.g. 8AM", validators=[DataRequired()])
     close = StringField("Closing Time e.g. 5:30PM", validators=[DataRequired()])
-    coffee_rating = SelectField("Coffee Rating", choices=["☕️", "☕☕", "☕☕☕", "☕☕☕☕", "☕☕☕☕☕"], validators=[DataRequired()])
-    wifi_rating = SelectField("Wifi Strength Rating", choices=["✘", "💪", "💪💪", "💪💪💪", "💪💪💪💪", "💪💪💪💪💪"], validators=[DataRequired()])
-    power_rating = SelectField("Power Socket Availability", choices=["✘", "🔌", "🔌🔌", "🔌🔌🔌", "🔌🔌🔌🔌", "🔌🔌🔌🔌🔌"], validators=[DataRequired()])
+    coffee_rating = SelectField("Coffee Rating", choices=["0", "2", "4", "6", "8", "10"], validators=[DataRequired()])
+    wifi_rating = SelectField("Wifi Strength Rating", choices=["0", "2", "4", "6", "8", "10"], validators=[DataRequired()])
+    power_rating = SelectField("Power Socket Availability", choices=["0", "2", "4", "6", "8", "10"], validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 CREATE_CAFE_SHOPS_TABLE = "CREATE TABLE IF NOT EXISTS cafe_shops (id SERIAL PRIMARY KEY, cafe_username TEXT, cafe TEXT, location TEXT, open TEXT, close TEXT, coffee_rating TEXT, wifi_rating TEXT, power_rating TEXT);"
