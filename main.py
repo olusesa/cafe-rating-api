@@ -2,13 +2,11 @@ import os
 import psycopg2
 from flask import Flask, render_template, redirect, url_for, request, jsonify
 from flask_bootstrap import Bootstrap5
-from flask_wtf import FlaskForm, CSRFProtect
+from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField
 from wtforms.validators import DataRequired, URL
 
 app = Flask(__name__)
-csrf = CSRFProtect()
-csrf.init_app(app)
 Bootstrap5(app)
 url = os.getenv("DATABASE_URL")
 app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')

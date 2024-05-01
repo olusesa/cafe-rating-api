@@ -7,9 +7,7 @@
   <div class="row">
     <div class="col-sm-12 col-md-8">
       <h1>Add a new cafe into the database</h1>
-      {{ form.csrf_token }}
       {{ render_form(form, novalidate=True) }}
-
       <p class="space-above">
         <a href="{{ url_for('get_all_cafe_shops') }}">See all cafes</a>
       </p>
