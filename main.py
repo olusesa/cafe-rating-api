@@ -31,11 +31,11 @@ with connection:
         cursor.execute(CREATE_CAFE_SHOPS_TABLE)
 
 INSERT_CAFE_SHOP_RETURN_ID = ("INSERT INTO cafe_shops (cafe_username, cafe, location, open, close, "
-                              "coffee_rating, coffee_rating, power_rating) "
-                              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s) RETURNING id;")
+                              "coffee_rating, wifi_rating, power_rating) "
+                              "VALUES (%s, %s, %s, %s, %s, %s, %s, %s) RETURNING id;")
 SELECT_ALL_CAFE_SHOPS = "SELECT * FROM cafe_shops;"
-SELECT_CAFE_SHOPS_BY_ID = ("SELECT id, cafe_username, cafe, location, open, close, coffee_rating, coffee_rating, power_rating "
-                           "FROM cafe_shops WHERE id = %s;")
+SELECT_CAFE_SHOPS_BY_ID = ("SELECT id, cafe_username, cafe, location, open, close, coffee_rating, coffee_rating, "
+                           "power_rating FROM cafe_shops WHERE id = %s;")
 UPDATE_CAFE_USERNAME_BY_ID = "UPDATE cafe_shops SET cafe_username = %s WHERE id = %s;"
 UPDATE_CAFE_SHOPS_BY_ID = "UPDATE cafe_shops SET cafe = %s WHERE id = %s;"
 UPDATE_CAFE_LOCATION_BY_ID = "UPDATE cafe_shops SET location = %s WHERE id = %s;"
@@ -61,11 +61,9 @@ def create_cafe_shop(cafe_username):
     if form.validate_on_submit():
         with connection:
             with connection.cursor() as cursor:
-        #         cursor.execute(INSERT_CAFE_SHOP_RETURN_ID, (cafe_username, cafe, location, open, close, coffee_rating, wifi_rating, power_rating))
-        #         cafe_id = cursor.fetchone()[0]
-        # return {"id": cafe_id, "cafe": cafe, "Coffee Rating": coffee_rating, "Wifi Rating": wifi_rating, "Power Rating": power_rating, "message": f"Cafe Shop Username:  {cafe_username} created successfully."}, 201
-                cursor.execute(INSERT_CAFE_SHOP_RETURN_ID, (form.cafe_username, form.cafe, form.location,
-                                                            form.open, form.close, form.coffee_rating, form.wifi_rating, form.power_rating))
+                cursor.execute(INSERT_CAFE_SHOP_RETURN_ID, (form.cafe_username.data, form.cafe.data, form.location.data,
+                                                            form.open.data, form.close.data, form.coffee_rating.data,
+                                                            form.wifi_rating.data, form.power_rating.data))
     return render_template('add.html', form=form)
 @app.route("/", methods=["GET"])
 def get_all_cafe_shops():
